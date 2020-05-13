@@ -1,12 +1,7 @@
-import { createStore, combineReducers } from 'redux';
-import cakeReducer from './cake/cakeReducer';
-import icecreamReducer from './icecream/icecreamReducer';
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
+import rootReducer from './rootReducer';
 
-const rootReducer = combineReducers({
-    cake: cakeReducer,
-    icecream: icecreamReducer,
-});
-
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 export default store;
